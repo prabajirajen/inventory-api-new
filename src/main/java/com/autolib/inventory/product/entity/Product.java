@@ -1,7 +1,5 @@
 package com.autolib.inventory.product.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,37 +8,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="product")
+@Table(name="product")
 public class Product {
 	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
 	private long id;
 	
-	@Column( name="p_code",nullable = false)
-	private String productCode;
+	@Column(name = "p_id")
+	private String productId;
 	
-	@Column( name="name",nullable = false)
-	private String productName;
+	@Column(name = "name")
+	private String name;
 	
-	@Column( name="catagory")
-	private String catagory;
+	@Column(name = "catagory_id")
+	private int catagoryId;
 	
-	@Column( name="sub_catagory")
-	private String subCatagory;
+	@Column(name = "sub_catagory_id")
+	private int subCatagoryId;
 	
-	@Column( name="asset")
+	@Column(name = "asset")
 	private String asset;
 	
-	@Column( name="hsn")
+	@Column(name = "hsn")
 	private String hsn;
 	
-	@Column( name="add_field1")
+	@Column(name = "add_field1")
 	private String addField1;
 	
-	@Column( name="add_field2")
+	@Column(name = "add_filed2")
 	private String addField2;
+	
+	
 
 	public long getId() {
 		return id;
@@ -50,38 +50,31 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getProductCode() {
-		return productCode;
+	public String getName() {
+		return name;
 	}
 
-	public void setProductCode(String productCode) {
-		this.productCode = productCode;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getProductName() {
-		return productName;
+	public int getCatagoryId() {
+		return catagoryId;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setCatagoryId(int catagoryId) {
+		this.catagoryId = catagoryId;
 	}
 
-	public String getCatagory() {
-		return catagory;
+	public int getSubCatagoryId() {
+		return subCatagoryId;
 	}
 
-	public void setCatagory(String catagory) {
-		this.catagory = catagory;
+	public void setSubCatagoryId(int subCatagoryId) {
+		this.subCatagoryId = subCatagoryId;
 	}
 
-	public String getSubCatagory() {
-		return subCatagory;
-	}
-
-	public void setSubCatagory(String subCatagory) {
-		this.subCatagory = subCatagory;
-	}
-
+	
 	public String getAsset() {
 		return asset;
 	}
@@ -106,6 +99,22 @@ public class Product {
 		this.addField1 = addField1;
 	}
 
+	
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", productId=" + productId + ", name=" + name + ", catagoryId=" + catagoryId
+				+ ", subCatagoryId=" + subCatagoryId + ", asset=" + asset + ", hsn=" + hsn + ", addField1=" + addField1
+				+ ", addField2=" + addField2 + "]";
+	}
+
 	public String getAddField2() {
 		return addField2;
 	}
@@ -113,8 +122,6 @@ public class Product {
 	public void setAddField2(String addField2) {
 		this.addField2 = addField2;
 	}
-	
-	
-	
 
+	
 }
