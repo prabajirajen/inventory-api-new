@@ -1,8 +1,0 @@
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\InventoryApplication.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\service\ProductService.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\controller\ProductController.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\service\ProductServiceImpl.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\dao\ProductDaoImpl.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\entity\Product.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\dao\ProductDao.java
-D:\JOHN\Project\API\inventory\src\main\java\com\autolib\inventory\product\repository\ProductRepository.java
