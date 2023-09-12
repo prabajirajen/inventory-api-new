@@ -4,39 +4,49 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import com.autolib.inventory.product.entity.Catagory;
+import com.autolib.inventory.common.utils.GlobleAccessUtil;
 import com.autolib.inventory.product.entity.Product;
-import com.autolib.inventory.product.entity.SubCatagory;
-import com.autolib.inventory.product.repository.CatagoryRepository;
 import com.autolib.inventory.product.repository.ProductRepository;
-import com.autolib.inventory.product.repository.SubCatagoryRepository;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
 	
+	private final Logger logger = LogManager.getLogger(this.getClass());
+	
 	@Autowired
-	private ProductRepository productRepository;
+	ProductRepository productRepository;
+	
 	@Autowired
-	private CatagoryRepository catagoryRepository;
-	@Autowired
-	private SubCatagoryRepository subCatagoryRepository;
+    private Environment environment;
+
 
 	@Override
 	public Map<String, Object> findSaveProduct(Product product) {
 		Map<String, Object> resp = new HashMap<String, Object>();
-		
-		
+		logger.info("findSaveProduct start:::::::");
 		try {
 			
-		Product product2=	productRepository.save(product);
-			
-		resp.put("Data", product2);
-			
+			Product _productId=	productRepository.findByProductId(product.getProductId());
+					
+			if(_productId!=null) {			
+				resp.put("StatusDesc", environment.getProperty("PRODUCT.PRODUCT_EXISTS"));
+			}
+			else {
+		    Product product2=	productRepository.save(product);		
+	     	resp.put("Data", product2);
+	     	resp.putAll(GlobleAccessUtil.successResponse());
+	     	logger.info("findSaveProduct end:::::::");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			resp.putAll(GlobleAccessUtil.failedResponse());
 		}
 		
 		
@@ -44,39 +54,41 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public Catagory saveCatagory(Catagory cg) 
-	{
-		System.out.println(cg.getcName()+"inside dao impl:::::::::::::::::::");
-		Catagory ob=null;
-		try
-		{
-			ob=catagoryRepository.save(cg);
-		}
-		catch (Exception e) {
+	public Map<String, Object> getAllProduct() {
+		logger.info("getAllProduct start:::::::");
+		Map<String, Object> resp = new HashMap<String, Object>();
+		try {
+			
+			List<Product> listOfProduct = productRepository.findAll();
+			resp.put("listOfProduct", listOfProduct);
+			resp.putAll(GlobleAccessUtil.successResponse());
+			logger.info("getAllProduct end:::::::");
+		} catch (Exception e) {
 			e.printStackTrace();
+			resp.putAll(GlobleAccessUtil.failedResponse());
 		}
-		return ob;
+		
+		return resp;
 	}
 
 	@Override
-	public List<Catagory> getAllCatagory() {
-		return catagoryRepository.findAll();
-	}
+	public Map<String, Object> deleteProduct(Product product) {
+		logger.info("deleteProduct start:::::::");
+		Map<String, Object> resp = new HashMap<String, Object>();
+		try {
 
-	@Override
-	public SubCatagory saveSubCatagory(SubCatagory saveCatagory) 
-	{
-		System.out.println(saveCatagory.getcId()+"::::::::cid");
-		SubCatagory sbc=null;
-		try
-		{
-			sbc=subCatagoryRepository.save(saveCatagory);
-		}
-		catch(Exception e)
-		{
+			Product productBean=	productRepository.findByProductId(product.getProductId());
+			
+			productRepository.delete(productBean);
+			
+			resp.putAll(GlobleAccessUtil.successResponse());
+			logger.info("deleteProduct end:::::::");
+		} catch (Exception e) {
 			e.printStackTrace();
+			resp.putAll(GlobleAccessUtil.failedResponse());
 		}
-		return sbc;
+		return resp;
+		
 	}
 
 }

@@ -1,15 +1,12 @@
 package com.autolib.inventory.product.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.autolib.inventory.product.dao.ProductDao;
-import com.autolib.inventory.product.entity.Catagory;
 import com.autolib.inventory.product.entity.Product;
-import com.autolib.inventory.product.entity.SubCatagory;
 
 @Service
 public class ProductServiceImpl  implements ProductService{
@@ -24,21 +21,17 @@ public class ProductServiceImpl  implements ProductService{
 	}
 
 	@Override
-	public Catagory saveCatagory(Catagory cg) {
-		// TODO Auto-generated method stub
-		return productDao.saveCatagory(cg);
+	public Map<String, Object> getAllProduct() {
+		
+		return productDao.getAllProduct();
 	}
 
 	@Override
-	public List<Catagory> getAllCatagory() 
-	{
-		return productDao.getAllCatagory();
+	public Map<String, Object> deleteProduct(Product product) {
+		
+		return productDao.deleteProduct(product);
 	}
-
-	@Override
-	public SubCatagory saveSubCatagory(SubCatagory saveCatagory) 
-	{
-		return productDao.saveSubCatagory(saveCatagory);
-	}
+	
+	
 
 }
