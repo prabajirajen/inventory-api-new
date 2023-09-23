@@ -13,8 +13,36 @@ public interface ProductDao {
 
 	public Catagory saveCatagory(Catagory cg);
 
+<<<<<<< Updated upstream
 	public List<Catagory> getAllCatagory();
 
 	public SubCatagory saveSubCatagory(SubCatagory saveCatagory);
+=======
+	Map<String, Object> deleteProduct(String productId);
+	
+	public Catagory saveCatagory(Catagory cg);
+
+	public Map<String, Object> getAllCatagory();
+
+	public SubCatagory saveSubCatagory(SubCatagory saveCatagory);
+
+	Map<String, Object> getAllSubCatagory();
+
+	Map<String, Object> getCatagoryById(int cid);
+
+	 Map<String, Object>  getSubCatagoryByIdProduct(int saveCatagory);
+
+	Map<String, Object> getCatagoryByIdProduct(int catagoryId);
+
+	Map<String, Object> getProductById(long pId);
+
+	Map<String, Object> updateProduct(Product product);
+
+	 Map<String, Object> getSubCatagoryByCId(int cid);
+
+	 Map<String, Object>  getSubCatagoryByScId(int saveCatagory);
+
+	 Map<String, Object> getCatagoryByCid(int catagoryId);
+>>>>>>> Stashed changes
 
 }
