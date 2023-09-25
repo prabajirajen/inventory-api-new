@@ -1,0 +1,13 @@
+com\autolib\inventory\product\entity\Product.class
+com\autolib\inventory\InventoryApplication.class
+com\autolib\inventory\product\repository\SubCatagoryRepository.class
+com\autolib\inventory\product\dao\ProductDaoImpl.class
+com\autolib\inventory\product\entity\SubCatagory.class
+com\autolib\inventory\product\service\ProductService.class
+com\autolib\inventory\common\utils\GlobleAccessUtil.class
+com\autolib\inventory\product\repository\ProductRepository.class
+com\autolib\inventory\product\repository\CatagoryRepository.class
+com\autolib\inventory\product\controller\ProductController.class
+com\autolib\inventory\product\dao\ProductDao.class
+com\autolib\inventory\product\entity\Catagory.class
+com\autolib\inventory\product\service\ProductServiceImpl.class
