@@ -34,5 +34,16 @@ public class GlobleAccessUtil {
 		
 		return response;	
 	}
+	
+
+	public static Map<String,String> successResponseessss(){
+		
+		Map<String, String> response = new HashMap<String, String>();
+		
+		response.put("StatusCode", "01");
+		response.put("StatusDesc", "Successfully Process the Request");
+		
+		return response;	
+	}
 
 }
